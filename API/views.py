@@ -29,7 +29,7 @@ def getRotatedPDF(request):
         object.outputFile = f'output_files/{file}'
         object.save()
         serializer = PDFSerializer(object)
-        print(serializer.data)
-        return Response(serializer.data, status=200)
+        # print(serializer.data)
+        return Response({'output file':f'{settings.MEDIA_ROOT}/output_files/{file}'}, status=200)
     except Exception as e:
         return Response({'message':str(e)}, status=status.HTTP_400_BAD_REQUEST)
